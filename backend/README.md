@@ -1,0 +1,1 @@
+School Management - only API for list all schools and add schools.

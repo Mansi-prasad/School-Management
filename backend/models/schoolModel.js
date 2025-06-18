@@ -4,8 +4,8 @@ const School = {
   create: (school, callback) => {
     const { name, address, latitude, longitude } = school;
     const sql =
-      "INSERT INTO school (name, address, latitude, longitude) VALUES (?, ?, ?, ?)";
-    db.query(sql, [name, address, latitude, longitude], callback);
+      "INSERT INTO school (name, address, latitude, longitude) VALUES (?, ?, ?, ?,?)";
+    db.query(sql, [id, name, address, latitude, longitude], callback);
   },
   // READ ALL
   getAll: (callback) => {

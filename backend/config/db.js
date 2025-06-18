@@ -1,12 +1,14 @@
-import mysql from "mysql";
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "schoolDB",
-});
+import mysql from "mysql2";
+import dotenv from "dotenv";
+dotenv.config();
+
+const DBUrl = process.env.DBURL;
+const connection = mysql.createConnection(DBUrl);
 connection.connect((err) => {
-  if (err) throw err;
+  if (err) {
+    console.error("MySQL connection failed:", err);
+    return;
+  }
   console.log("Connected to MySQL Database");
 });
 

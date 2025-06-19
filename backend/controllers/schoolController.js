@@ -2,10 +2,9 @@ import School from "../models/schoolModel.js";
 import { calculateDistance } from "../utils/distance.js";
 // add school
 export const addSchool = async (req, res) => {
-  const { name, address, latitude, longitude } = req.body;
-
+  const { id, name, address, latitude, longitude } = req.body;
   // empty check
-  if (!name || !address || latitude == null || longitude == null) {
+  if (!id || !name || !address || latitude == null || longitude == null) {
     return res.status(400).json({ error: "All fields are required" });
   }
   // Validate name and address
@@ -28,7 +27,7 @@ export const addSchool = async (req, res) => {
       .json({ error: "Latitude and longitude must be numbers" });
   }
 
-  School.create({ name, address, latitude, longitude }, (err, result) => {
+  School.create({ id, name, address, latitude, longitude }, (err, result) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(201).json({ message: "School added successfully!" });
   });
